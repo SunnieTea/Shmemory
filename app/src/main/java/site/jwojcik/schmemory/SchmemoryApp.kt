@@ -1,0 +1,105 @@
+package site.jwojcik.schmemory
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import kotlinx.serialization.Serializable
+
+sealed class Routes {
+    @Serializable
+    data object Home
+
+    @Serializable
+    data object SpeechList
+
+    @Serializable
+    data class Speech(
+        val speechId: Int
+    )
+
+    @Serializable
+    data object SceneList
+
+    @Serializable
+    data class Scene(
+        val sceneId: Int
+    )
+
+    @Serializable
+    data object SettingsList
+
+}
+
+@Composable
+fun SchmemoryApp() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = Routes.Home
+    ) {
+        composable<Routes.Home> {
+            HomeScreen(
+                onScenesClick = {
+                    navController.navigate(
+                        Routes.SceneList
+                    )
+                },
+                onSpeechesClick = {
+                    navController.navigate(
+                        Routes.SpeechList
+                    )
+                },
+                onSettingsClick = {
+                    navController.navigate(
+                        Routes.SettingsList
+                    )
+                }
+            )
+        }
+        composable<Routes.SpeechList> {
+            SpeechListScreen(
+                onUpClick = {
+                    navController.navigateUp()
+                },
+                onSceneClick = { speechId: Int ->
+                    navController.navigate(
+                        Routes.Scene(speechId)
+                    )
+                }
+            )
+        }
+        composable<Routes.Speech> { backstackEntry ->
+            val speech: Routes.Speech = backstackEntry.toRoute()
+
+            SpeechScreen(
+                speechId = speech.speechId,
+                onUpClick = {
+                    navController.navigateUp()
+                }
+            )
+        }
+
+    }
+}
+
+@Composable
+fun SpeechScreen(speechId: Int, onUpClick: () -> Boolean) {
+    TODO("Not yet implemented")
+}
+
+@Composable
+fun SpeechListScreen(onUpClick: () -> Boolean, onSceneClick: (Int) -> Unit) {
+    TODO("Not yet implemented")
+}
+
+@Composable
+fun HomeScreen(
+    onScenesClick: () -> Unit,
+    onSpeechesClick: () -> Unit,
+    onSettingsClick: () -> Unit
+) {
+    TODO("Not yet implemented")
+}
