@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "site.jwojcik.schmemory.app-mergeDebugResources-34:/values-v30/values-v30.xml",
+            "outputFile": "site.jwojcik.schmemory.app-mergeDebugResources-41:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "/Users/jm12wojc/.gradle/caches/9.1.0/transforms/60f5356e3ed8a8942cc839001284631c/transformed/material3-release/res/values-v30/values-v30.xml",
+                    "source": "/Users/jm12wojc/.gradle/caches/9.1.0/transforms/9b267d12102b5e7e550b5ba93ee1629b/transformed/material3-release/res/values-v30/values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
